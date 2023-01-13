@@ -10,20 +10,20 @@
  * Do not edit the class manually.
  */
 
-export interface ProductModel { 
-    id?: string;
-    price?: number;
-    category?: ProductModel.CategoryEnum;
-    brand?: string;
-    therapeuticClass?: string;
-    imageUrl?: string;
-    tags?: Array<string>;
+export interface ProductModel {
+  id?: string;
+  price?: number;
+  category?: ProductModel.CategoryEnum;
+  brand?: string;
+  therapeuticClass?: string;
+  imageUrl?: string;
+  tags?: Array<string>;
 }
 export namespace ProductModel {
-    export type CategoryEnum = 'invoices' | 'transactions' | 'assets';
-    export const CategoryEnum = {
-        Invoices: 'invoices' as CategoryEnum,
-        Transactions: 'transactions' as CategoryEnum,
-        Assets: 'assets' as CategoryEnum
-    };
+  export type CategoryEnum = 'psychotropic' | 'paramedical' | 'medicament';
+  export const CategoryEnum = {
+    medicament: 'medicament' as CategoryEnum,
+    psychotropic: 'psychotropic' as CategoryEnum,
+    paramedical: 'paramedical' as CategoryEnum
+  };
 }

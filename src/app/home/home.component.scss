@@ -1,0 +1,92 @@
+:host {
+  display: flex;
+  flex-direction: column;
+
+  width: 100%;
+  height: 100%;
+
+  gap: 38px;
+
+  padding: 62px;
+}
+
+.toolbar{
+
+}
+
+.container {
+  position: relative;
+  display: flex;
+  gap: 38px;
+
+  width: 100%;
+
+  .searchbar {
+    position: sticky;
+    top: 60px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;
+
+    width: 400px;
+    height: fit-content;
+
+    border-radius: 4px;
+    box-shadow: 0 3px 4px 0 rgba(10, 31, 68, 0.1), 0 0 1px 0 rgba(10, 31, 68, 0.08);
+    background-color: #ffffff;
+    padding: 32px;
+
+    .actions-container {
+      display: flex;
+      justify-content: flex-end;
+    }
+
+  }
+
+  .content-container {
+    flex: 1;
+
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+
+    gap: 16px;
+
+    width: 100%;
+
+    .header {
+      display: flex;
+      justify-content: space-between;
+
+      .title {
+        margin: 0;
+      }
+
+      .pagination-container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        gap: 12px;
+      }
+    }
+
+    .products {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+
+      gap: 16px;
+
+      .product {
+        flex: 1;
+        min-width: 300px;
+        width: 100%;
+      }
+    }
+  }
+
+
+}

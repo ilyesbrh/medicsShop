@@ -1,0 +1,70 @@
+<mat-toolbar color="primary" class="toolbar mat-elevation-z2">
+  <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <span>My App</span>
+  <span class="example-spacer"></span>
+  <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+    <mat-icon>favorite</mat-icon>
+  </button>
+  <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
+    <mat-icon>share</mat-icon>
+  </button>
+</mat-toolbar>
+
+<div class="container">
+  <div class="searchbar">
+    <h1>Filters</h1>
+    <mat-form-field appearance="outline">
+      <input matInput placeholder="search.." [(ngModel)]="search" (ngModelChange)="loadData()">
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-select placeholder="Type" [(ngModel)]="selectedType" (ngModelChange)="loadData()" name="item">
+        <mat-option *ngFor="let item of categories" [value]="item">
+          {{item}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <div class="actions-container">
+      <button mat-raised-button color="primary" (click)="loadData()"><mat-icon>filter_list</mat-icon> Apply</button>
+    </div>
+  </div>
+
+  <div class="content-container">
+
+    <div class="header">
+
+      <h1 class="title">Products</h1>
+      <div class="pagination-container">
+        <button mat-icon-button color="primary"><mat-icon>arrow_backword</mat-icon></button>
+        <div> <b> {{products.page?.page}} </b> of {{products.page?.totalPages}}</div>
+        <button mat-icon-button color="primary"><mat-icon>arrow_forward</mat-icon></button>
+      </div>
+    </div>
+
+    <div class="products">
+
+      <mat-card class="product" *ngFor="let product of products.data">
+        <mat-card-header>
+          <!-- <div mat-card-avatar class="example-header-image"></div> -->
+          <mat-card-title>{{product.brand}}</mat-card-title>
+          <mat-card-subtitle>{{product.price}} DA</mat-card-subtitle>
+        </mat-card-header>
+        <img mat-card-image [src]="product.imageUrl" alt="Photo of a Shiba Inu">
+        <mat-card-content>
+          <mat-chip-list>
+            <mat-chip>{{product.category}}</mat-chip>
+            <mat-chip>{{product.therapeuticClass}}</mat-chip>
+            <mat-chip *ngFor="let tag of product.tags">{{tag}}</mat-chip>
+          </mat-chip-list>
+        </mat-card-content>
+        <mat-card-actions align="end">
+          <button mat-raised-button color="primary">Add to cart</button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+
+  </div>
+
+</div>
