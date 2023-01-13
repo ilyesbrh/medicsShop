@@ -17,7 +17,8 @@ import { MatToolbarModule } from "@angular/material/toolbar";
 import { LoginComponent } from './login/login.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HomeComponent } from './home/home.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { TokenInterceptor } from './globals/interceptors/token-interceptor';
 
 const MaterialModules = [MatButtonModule, MatFormFieldModule, MatInputModule, MatIconModule, MatSelectModule, MatCardModule, MatChipsModule, MatToolbarModule];
 
@@ -36,7 +37,13 @@ const MaterialModules = [MatButtonModule, MatFormFieldModule, MatInputModule, Ma
     HttpClientModule,
     ...MaterialModules
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptor,
+      multi: true
+    },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
